@@ -1,22 +1,24 @@
 import React from "react";
 
 class App extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0, //Numbers & strings are not rendered
-      user: { name: "Mithra" },
-    };
-  }
+  inputRef = React.createRef();
+  btnRef = React.createRef();
+  handleSubmit = () => {
+    console.log("submitted");
+    console.log(this.inputRef.current);
+    console.log(this.btnRef.current);
+    const stuName = document.getElementById("stuName");
+    console.log(stuName.value);
+    console.log(this.inputRef.current.value);
+  };
 
   render() {
     console.log("rendered"); //arrays & objects only rendered
     return (
       <>
-        <p>Count : {this.state.count}</p>
-        <button onClick={() => this.setState({ count: 0 })}>Reset</button>
-        <button onClick={() => this.setState({ user: { name: "Mithra" } })}>
-          Change Name
+        <input ref={this.inputRef} id="stuName" type="text" />
+        <button ref={this.btnRef} onClick={this.handleSubmit}>
+          Submit
         </button>
       </>
     );
