@@ -4,13 +4,13 @@ class App extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
+      count: 0, //Numbers & strings are not rendered
       user: { name: "Mithra" },
     };
   }
 
   render() {
-    console.log("rendered");
+    console.log("rendered"); //arrays & objects only rendered
     return (
       <>
         <p>Count : {this.state.count}</p>
