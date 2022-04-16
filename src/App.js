@@ -1,28 +1,28 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class App extends React.PureComponent {
-  inputRef = React.createRef();
-  btnRef = React.createRef();
-  handleSubmit = () => {
-    console.log("submitted");
-    console.log(this.inputRef.current);
-    console.log(this.btnRef.current);
-    const stuName = document.getElementById("stuName");
-    console.log(stuName.value);
-    console.log(this.inputRef.current.value);
-  };
-
   render() {
     console.log("rendered"); //arrays & objects only rendered
     return (
       <>
-        <input ref={this.inputRef} id="stuName" type="text" />
-        <button ref={this.btnRef} onClick={this.handleSubmit}>
-          Submit
-        </button>
+        <p> Name : {this.props.name ? this.props.name : "No name exists"}</p>
+        <p> Age : {this.props.age}</p>
+        <p> City : {this.props.city}</p>
+        <p> Gender : {this.props.gender}</p>
       </>
     );
   }
 }
+App.PropType = {
+  name: PropTypes.string.isRequired,
+  age: PropTypes.number.isRequired,
+  city: PropTypes.string,
+  gender: PropTypes.oneOf(("female", "male", "Other")).isRequired,
+};
+
+App.defaultProps = {
+  gender: "female",
+};
 
 export default App;
